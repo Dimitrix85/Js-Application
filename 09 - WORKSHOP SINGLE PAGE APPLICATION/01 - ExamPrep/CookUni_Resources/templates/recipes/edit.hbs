@@ -1,0 +1,33 @@
+<div class="container">
+    {{> header}}
+    <form class="text-center p-5 form-layout" action="/edit/{{edit._id}}" method="POST" id="edit-receipt-form">
+        <p class="h4 mb-4">Edit Recipe</p>
+
+        <input type="text" id="defaultRecepieEditMeal" name="meal" class="form-control mb-4" placeholder="{{edit.meal}}"
+            value="{{edit.meal}}">
+
+        <input type="text" id="defaultRecepieEditIngredients" name="ingredients" class="form-control mb-4"
+            placeholder="{{edit.ingredients}}" value="{{edit.ingredients}}">
+
+        <textarea type="text" id="defaultRecepieEditMethodOfPreparation" name="prepMethod" class="form-control mb-4"
+            placeholder="{{edit.prepMethod}}">{{edit.prepMethod}}</textarea>
+
+        <textarea type="text" id="defaultRecepieEditDescription" name="description" class="form-control mb-4"
+            placeholder="{{edit.description}}">{{edit.description}}</textarea>
+
+        <input type="text" id="defaultRecepieEditFoodImageURL" name="foodImageURL" class="form-control mb-4"
+            placeholder="{{edit.foodImageURL}}" value="{{edit.foodImageURL}}">
+
+        <select name="category" select="">
+            <option selected>{{edit.category}}</option>
+            <option>Vegetables and legumes/beans</option>
+            <option>Fruits</option>
+            <option>Grain Food</option>
+            <option>Milk, cheese, eggs and alternatives</option>
+            <option>Lean meats and poultry, fish and alternatives</option>
+        </select>
+        <button class="btn btn-danger w-25 m-auto my-4 btn-block" type="submit">Edit it</button>
+
+    </form>
+</div>
+{{> footer}}
