@@ -12,17 +12,25 @@ export function getLogin(ctx) {
 
 export function postLogin(ctx) {
     let { username, password } = ctx.params;
-
+    common.displayLoading();
     requster.post("user", "login", { username, password }, "Basic")
         .then(ui => {
             sessionStorage.setItem("authtoken", ui._kmd.authtoken);
             sessionStorage.setItem("username", ui.username);
             sessionStorage.setItem("id", ui._id);
             sessionStorage.setItem("names", ui.firstName + " " + ui.lastName);
-
-            ctx.redirect("/");
-        })
-        .catch(()=>common.displayError("Invalid login"));
+            // ctx.redirect("/");
+            //common.displayLoad();
+        }).then(() => {
+            setTimeout(() => {
+                common.displaySucces('Successfully Login.');
+            }, 1000);
+            ctx.redirect('/')
+            common.hideLoading();
+        }).catch((e) => {
+            common.displayError('Invalid Login!');
+            console.error(e);
+        });
 }
 
 export function getRegister(ctx) {
